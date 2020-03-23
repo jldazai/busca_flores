@@ -1,7 +1,11 @@
 var tablero = [[],[],[],[],[],[],[],[],[],[]];
 var visible = [[],[],[],[],[],[],[],[],[],[]];
+var rec =[];
+
+
 
 var per=0,gan=0,jug=0;
+var ini,fin;
 if(localStorage.getItem("perdidas")!=null){
     per=localStorage.getItem("perdidas");
 }
@@ -10,6 +14,9 @@ if(localStorage.getItem("ganadas")!=null){
 }
 if(localStorage.getItem("jugadas")!=null){
     jug=localStorage.getItem("jugadas");
+}
+if(localStorage.getItem("record")!=null){
+    rec=JSON.parse(localStorage.getItem("record"));
 }
 
 
@@ -89,11 +96,11 @@ function contCeldasDestapadas(){
     return num;
 }
 function jugar(fila,colu){
-    
+    btn=$("#"+fila+colu);
+    btn.empty();
     if(tablero[fila][colu] == 9){
         visible[fila][colu] = true;
-        btn = $("#"+fila+colu);
-        btn.css({'background-color':'red'});
+        destaparMinas();
         $(".btn").prop("onclick",null);
         per++;
         jug++;
@@ -103,6 +110,8 @@ function jugar(fila,colu){
     else{
         destaparcelda(fila,colu);
         if(contCeldasDestapadas() == 90){
+            fin = Date.now();
+            agregarRecord();
             $(".btn").prop("onclick",null);
             gan++;
             jug++;
@@ -110,26 +119,77 @@ function jugar(fila,colu){
             alert("gano");
         }
     }
+    
+}
+function bandera(fila,colu){
+    btn=$("#"+fila+colu);
+    if(btn.prop('firstChild')==null){
+         btn.append('<img src="Imagenes/iconoBandera.png" width="23px" height="23px">' );
+    }
+    else{
+        btn.children('img').remove();
+    }
+   
+}
+function destaparMinas(){
+    for(i=0;i<10;i++){
+        for(j=0;j<10;j++){
+            if(tablero[i][j]==9){
+                btn=$("#"+i+j);
+                btn.css({'background-color':'purple'});
+                btn.append('<img src="Imagenes/IconoTitulo.png" width="23px" height="23px">')
+            }
+        }
+    }
+}
+function eventos(){
+    for(fila=0;fila<10;i++){
+        for(colu=0;colu<10;j++){
+            btn=$("#"+i+j);
+            btn.on('click',function(){jugar(fila,colu);});
+            btn.on('auxclick',function(){bandera(fila,colu);});
+            
+        }
+    }
 }
 function iniciarBotones(){
     $(".btn").remove();
     for(i=0;i<10;i++){
         for(j=0;j<10;j++){
-            $(".tablero").append('<button type="button" class="btn btn-default1" id="'+i+j+'" onclick="jugar('+i+','+j+')"></button>')
+            $(".tablero").append('<button type="button" class="btn btn-default1" id="'+i+j+'" onclick="jugar('+i+','+j+')" onauxclick="bandera('+i+','+j+')"></button>')
         }
     }
     iniciarTablero();
+    ini = Date.now();
 }
 function actualizarPuntos(){  
     localStorage.setItem("perdidas",per);
     localStorage.setItem("ganadas",gan);
     localStorage.setItem("jugadas",jug);
+
     puntos();
 }
 function puntos(){
     $(".pt").remove();
     $(".partidasTotales").append('<h1 class="pt">'+jug+'</h1>');
     $(".partidasGanadas").append('<h1 class="pt">'+gan+'</h1>');
-    $(".partidasPerdidas").append('<h1 class="pt">'+per+'</h1>')
+    $(".partidasPerdidas").append('<h1 class="pt">'+per+'</h1>');
+    for(i=0;i<10;i++){
+        $(".record").append('<h1 class="pt">'+aMin(rec[i])+'</h1>');
+    }
 }
+function agregarRecord(){
+    sec=fin-ini;
+    rec.push(sec);
+    rec.sort(function(a,b){return a-b;});
+    ajson=JSON.stringify(rec);
+    localStorage.setItem("record",ajson);
+}
+function aMin(sec){
+    sec=sec/1000;
+    minu=Math.floor(sec/60);
+    seg=Math.floor(sec-(minu*60));
+    return minu+":"+seg;
+}
+
 
