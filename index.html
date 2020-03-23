@@ -3,7 +3,12 @@
 <head>
     <link rel="stylesheet" href="estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Bellota+Text&display=swap" rel="stylesheet">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
     <script type="text/javascript" src="buscaflores.js"></script>
+    
     <link rel="icon" href="Imagenes/IconoCabecera.png" />
     <title>BUSCAFLORECITAS</title>
 </head>
@@ -23,7 +28,7 @@
             
             
             <ul>
-                <li><a href="#tablero"><i class="fas juegoNuevo"></i>Juego nuevo</a></li>
+                <li onclick="iniciarBotones()"><a href="#tablero"><i class="fas juegoNuevo"></i>Juego nuevo</a></li>
                 <li><a href="#partidas"><i class="fas partidasJugadas"></i>Partidas jugadas</a></li>
                 <li><a href="#record"><i class="fas records"></i>Récords</a></li>
                 <li><a href="#reglas"><i class="fas regla"></i>Reglas</a></li>
@@ -40,118 +45,18 @@
             <img class="imagenFlor5" src="Imagenes/flor.png" width="40px" height="40px">
             <img class="imagenFlor6" src="Imagenes/flor.png" width="40px" height="40px">
 
-            <div class="tablero">
-
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
-                <button type="button" class="btn btn-default1"></button>
-                <button type="button" class="btn btn-default2"></button>
-                <button type="button" class="btn btn-default3"></button>
-                <button type="button" class="btn btn-default4"></button>
-                <button type="button" class="btn btn-default5"></button>
+            <div class="tablero">           
             </div>
             <div class="partidas">
                 <div class="partidasTotales">
-                    <h1>Partidas jugadas</h1>
+                    <h1>Partidas jugadas</h1><br>
+
                 </div>
                 <div class="partidasGanadas">
-                    <h1>Partidas ganadas</h1>
+                    <h1>Partidas ganadas</h1><br>
                 </div>
                 <div class="partidasPerdidas">
-                    <h1>Partidas perdidas</h1>
+                    <h1>Partidas perdidas</h1><br>
                 </div>
             </div>
             <div class="record">
@@ -174,5 +79,9 @@
             </div>
         </div>
     </div>
+    <script>
+        iniciarBotones();
+        puntos();
+    </script>   
 </body>
 </html>
